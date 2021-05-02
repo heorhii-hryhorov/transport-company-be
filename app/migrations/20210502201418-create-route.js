@@ -1,5 +1,5 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('Route', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('Routes', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -30,7 +30,7 @@ module.exports = {
     transportId: {
       type: Sequelize.INTEGER,
       references: {
-        model: 'Transport',
+        model: 'Transports',
         key: 'id',
       },
     },

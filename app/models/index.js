@@ -11,6 +11,7 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.p
   define: {
     timestamps: false,
   },
+  logging: false,
 });
 
 const db = {};
