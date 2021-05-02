@@ -5,13 +5,14 @@
     },
     "extends": ["eslint:recommended", "airbnb-base"],
     "parser": "babel-eslint",
+    "rules": {
+      "import/no-dynamic-require": "off",
+      "global-require": "off"
+    },
     "parserOptions": {
       "impliedStrict": true,
       "sourceType": "module",
       "ecmaVersion": 9
-    },
-    "globals": {
-      "Set": true
     }
   }
   
