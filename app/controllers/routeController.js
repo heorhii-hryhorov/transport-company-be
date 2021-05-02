@@ -11,6 +11,7 @@ export const create = (req, res) => {
     transportType: req.body['transport-type'],
     revenue: req.body.revenue,
     arrivalDate: req.body['arrival-date'],
+    status: req.body.status,
   };
 
   Route.create(route)
@@ -49,6 +50,7 @@ export const update = (req, res) => {
     transportType: req.body['transport-type'],
     revenue: req.body.revenue,
     arrivalDate: req.body['arrival-date'],
+    status: req.body.status,
   };
 
   Route.update(route, {

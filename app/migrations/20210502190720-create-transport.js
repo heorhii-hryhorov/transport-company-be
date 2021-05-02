@@ -25,5 +25,5 @@ module.exports = {
       type: Sequelize.ENUM('available', 'unavailable'),
     },
   }),
-  down: (queryInterface) => queryInterface.dropTable('Transport'),
+  down: (queryInterface) => queryInterface.dropTable('Transports'),
 };

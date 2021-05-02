@@ -27,6 +27,9 @@ module.exports = {
     arrivalDate: {
       type: Sequelize.DATE,
     },
+    status: {
+      type: Sequelize.ENUM('awaiting', 'in progress', 'completed'),
+    },
     transportId: {
       type: Sequelize.INTEGER,
       references: {
@@ -35,5 +38,5 @@ module.exports = {
       },
     },
   }),
-  down: (queryInterface) => queryInterface.dropTable('Route'),
+  down: (queryInterface) => queryInterface.dropTable('Routes'),
 };
