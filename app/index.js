@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import { PORT } from '../configs/config';
 
 const app = express();
 
-app.listen('4000', () => {
+app.listen(PORT, () => {
   /* eslint-disable no-console */
-  console.log('Server started on port 4000');
+  console.log(`Server started on port ${PORT}`);
 });
