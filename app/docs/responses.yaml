@@ -1,8 +1,10 @@
 components:
   responses:
     NotFound:
-      description: Not found.
+      description: Not found
     AccessDenied:
       description: Access Denied
     Forbidden:
       description: Forbidden
+    InternalServerError:
+      description: Internal Server Error

@@ -26,6 +26,8 @@ const router = express.Router();
  *          $ref: '#/components/responses/Forbidden'
  *        401:
  *          $ref: '#/components/responses/AccessDenied'
+ *        500:
+ *          $ref: '#/components/responses/InternalServerError'
  */
 router.get('/', findAll);
 
@@ -52,6 +54,8 @@ router.get('/', findAll);
  *          $ref: '#/components/responses/Forbidden'
  *        401:
  *          $ref: '#/components/responses/AccessDenied'
+ *        500:
+ *          $ref: '#/components/responses/InternalServerError'
  */
 router.post('/create', create);
 
@@ -79,6 +83,8 @@ router.post('/create', create);
  *          $ref: '#/components/responses/Forbidden'
  *        401:
  *          $ref: '#/components/responses/AccessDenied'
+ *        500:
+ *          $ref: '#/components/responses/InternalServerError'
  */
 router.put('/update/:routeId', update);
 
@@ -108,6 +114,8 @@ router.put('/update/:routeId', update);
  *          $ref: '#/components/responses/Forbidden'
  *        401:
  *          $ref: '#/components/responses/AccessDenied'
+ *        500:
+ *          $ref: '#/components/responses/InternalServerError'
  */
 router.delete('/delete/:routeId', deleteRoute);
 
