@@ -1,6 +1,6 @@
 import express from 'express';
 import {
-  create, deleteRoute, findAll, update,
+  createRoute, deleteRoute, findAllRoutes, updateRoute,
 } from '../../controllers/routeController';
 
 const router = express.Router();
@@ -29,7 +29,7 @@ const router = express.Router();
  *        500:
  *          $ref: '#/components/responses/InternalServerError'
  */
-router.get('/', findAll);
+router.get('/', findAllRoutes);
 
 /**
  * @swagger
@@ -57,7 +57,7 @@ router.get('/', findAll);
  *        500:
  *          $ref: '#/components/responses/InternalServerError'
  */
-router.post('/create', create);
+router.post('/create', createRoute);
 
 /**
  * @swagger
@@ -86,7 +86,7 @@ router.post('/create', create);
  *        500:
  *          $ref: '#/components/responses/InternalServerError'
  */
-router.put('/update/:routeId', update);
+router.put('/update/:routeId', updateRoute);
 
 /**
  * @swagger

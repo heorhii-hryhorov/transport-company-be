@@ -1,6 +1,6 @@
 import express from 'express';
 import {
-  create, deleteTransport, findAll, update,
+  createTransport, deleteTransport, findAllTransports, updateTransport,
 } from '../../controllers/transportController';
 
 const router = express.Router();
@@ -29,7 +29,7 @@ const router = express.Router();
  *        500:
  *          $ref: '#/components/responses/InternalServerError'
  */
-router.get('/', findAll);
+router.get('/', findAllTransports);
 
 /**
  * @swagger
@@ -75,7 +75,7 @@ router.get('/', findAll);
  *        500:
  *          $ref: '#/components/responses/InternalServerError'
  */
-router.post('/create', create);
+router.post('/create', createTransport);
 
 /**
  * @swagger
@@ -122,7 +122,7 @@ router.post('/create', create);
  *        500:
  *          $ref: '#/components/responses/InternalServerError'
  */
-router.put('/update/:transportId', update);
+router.put('/update/:transportId', updateTransport);
 
 /**
  * @swagger

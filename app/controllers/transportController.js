@@ -2,7 +2,7 @@ import db from '../models';
 
 const { Transport } = db;
 
-export const create = (req, res) => {
+export const createTransport = (req, res) => {
   const transport = {
     transportNumber: req.body.transportNumber,
     model: req.body.model,
@@ -24,7 +24,7 @@ export const create = (req, res) => {
     });
 };
 
-export const findAll = (req, res) => {
+export const findAllTransports = (req, res) => {
   Transport.findAll()
     .then((data) => {
       res.send(data);
@@ -37,7 +37,7 @@ export const findAll = (req, res) => {
     });
 };
 
-export const update = (req, res) => {
+export const updateTransport = (req, res) => {
   const { transportId } = req.params;
 
   const transport = {
@@ -55,11 +55,11 @@ export const update = (req, res) => {
     .then((num) => {
       if (num === 1) {
         res.send({
-          message: 'Was updated successfully.',
+          message: 'Updated successfully',
         });
       } else {
-        res.send({
-          message: `Cannot update Tutorial with id=${transportId}. Maybe Tutorial was not found or req.body is empty!`,
+        res.status(404).send({
+          message: 'Not found',
         });
       }
     })
@@ -83,8 +83,8 @@ export const deleteTransport = (req, res) => {
           message: 'Deleted successfully!',
         });
       } else {
-        res.send({
-          message: `Cannot delete with id=${transportId}. Maybe was not found!`,
+        res.status(404).send({
+          message: 'Not found',
         });
       }
     })

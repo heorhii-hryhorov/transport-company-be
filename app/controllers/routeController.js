@@ -2,7 +2,7 @@ import db from '../models';
 
 const { Route } = db;
 
-export const create = (req, res) => {
+export const createRoute = (req, res) => {
   const route = {
     startCity: req.body.startCity,
     endCity: req.body.endCity,
@@ -16,7 +16,7 @@ export const create = (req, res) => {
 
   Route.create(route)
     .then((data) => {
-      res.send(data);
+      res.status(200).send(data);
     })
     .catch((err) => {
       res.status(500).send({
@@ -26,10 +26,10 @@ export const create = (req, res) => {
     });
 };
 
-export const findAll = (req, res) => {
+export const findAllRoutes = (req, res) => {
   Route.findAll()
     .then((data) => {
-      res.send(data);
+      res.status(200).send(data);
     })
     .catch((err) => {
       res.status(500).send({
@@ -39,7 +39,7 @@ export const findAll = (req, res) => {
     });
 };
 
-export const update = (req, res) => {
+export const updateRoute = (req, res) => {
   const { routeId } = req.params;
 
   const route = {
@@ -58,12 +58,12 @@ export const update = (req, res) => {
   })
     .then((num) => {
       if (num === 1) {
-        res.send({
-          message: 'Was updated successfully.',
+        res.status(200).send({
+          message: 'Updated successfully',
         });
       } else {
         res.send({
-          message: `Cannot update record with id=${routeId}.`,
+          message: 'Not found',
         });
       }
     })
@@ -83,11 +83,11 @@ export const deleteRoute = (req, res) => {
     .then((num) => {
       if (num === 1) {
         res.send({
-          message: 'Deleted successfully!',
+          message: 'Deleted successfully',
         });
       } else {
-        res.send({
-          message: `Cannot delete with id=${routeId}. Maybe was not found!`,
+        res.status(404).send({
+          message: 'Not found',
         });
       }
     })
