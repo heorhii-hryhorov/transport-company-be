@@ -6,7 +6,7 @@ export const create = (req, res) => {
   const transport = {
     transportNumber: req.body.transportNumber,
     model: req.body.model,
-    transportType: req.bodytransportType,
+    transportType: req.body.transportType,
     purchaseDate: req.body.purchaseDate,
     mileage: req.body.mileage,
     status: req.body.status,

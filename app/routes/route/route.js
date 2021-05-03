@@ -45,7 +45,7 @@ router.get('/', findAll);
  *          $ref: '#/components/schemas/RouteModel'
  *    responses:
  *        200:
- *          description: Transport created successfully.
+ *          description: Route created successfully.
  *        404:
  *          $ref: '#/components/responses/NotFound'
  *        403:
@@ -66,13 +66,13 @@ router.post('/create', create);
  *    parameters:
  *      - $ref: '#/components/parameters/routeId'
  *      - in: body
- *        name: Update Food
- *        description: Update food in DB.
+ *        name: Update Route
+ *        description: Update route in DB.
  *        schema:
  *          $ref: '#/components/schemas/RouteModel'
  *    responses:
  *        200:
- *          description: Transport updated successfully.
+ *          description: Route updated successfully.
  *        404:
  *          $ref: '#/components/responses/NotFound'
  *        403:
@@ -87,7 +87,7 @@ router.put('/update/:routeId', update);
  * /route/delete/{routeId}:
  *  delete:
  *    tags: [Route]
- *    description: Removes food item from DB.
+ *    description: Removes route from DB.
  *    produces:
  *      - application/json
  *    parameters:
@@ -101,7 +101,7 @@ router.put('/update/:routeId', update);
  *              type: string
  *    responses:
  *        200:
- *          description: Transport deleted successfully.
+ *          description: Route deleted successfully.
  *        404:
  *          $ref: '#/components/responses/NotFound'
  *        403:
