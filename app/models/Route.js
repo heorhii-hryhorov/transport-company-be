@@ -7,6 +7,7 @@ export default (sequelize, DataTypes) => {
     transportType: DataTypes.ENUM('cargo', 'passenger'),
     revenue: DataTypes.INTEGER,
     arrivalDate: DataTypes.DATE,
+    status: DataTypes.ENUM('awaiting', 'in progress', 'completed'),
   }, {});
 
   Route.associate = ({

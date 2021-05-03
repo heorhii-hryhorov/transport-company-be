@@ -1,0 +1,8 @@
+components:
+  responses:
+    NotFound:
+      description: Not found.
+    AccessDenied:
+      description: Access Denied
+    Forbidden:
+      description: Forbidden

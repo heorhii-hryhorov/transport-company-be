@@ -4,10 +4,10 @@ const { Transport } = db;
 
 export const create = (req, res) => {
   const transport = {
-    transportNumber: req.body['transport-number'],
+    transportNumber: req.body.transportNumber,
     model: req.body.model,
-    transportType: req.body['transport-type'],
-    purchaseDate: req.body['purchase-date'],
+    transportType: req.bodytransportType,
+    purchaseDate: req.body.purchaseDate,
     mileage: req.body.mileage,
     status: req.body.status,
   };
@@ -38,19 +38,19 @@ export const findAll = (req, res) => {
 };
 
 export const update = (req, res) => {
-  const { id } = req.params;
+  const { transportId } = req.params;
 
   const transport = {
-    transportNumber: req.body['transport-number'],
+    transportNumber: req.body.transportNumber,
     model: req.body.model,
-    transportType: req.body['transport-type'],
-    purchaseDate: req.body['purchase-date'],
+    transportType: req.bodytransportType,
+    purchaseDate: req.body.purchaseDate,
     mileage: req.body.mileage,
     status: req.body.status,
   };
 
   Transport.update(transport, {
-    where: { id },
+    where: { id: transportId },
   })
     .then((num) => {
       if (num === 1) {
@@ -59,7 +59,7 @@ export const update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`,
+          message: `Cannot update Tutorial with id=${transportId}. Maybe Tutorial was not found or req.body is empty!`,
         });
       }
     })
@@ -72,10 +72,10 @@ export const update = (req, res) => {
 };
 
 export const deleteTransport = (req, res) => {
-  const { id } = req.params;
+  const { transportId } = req.params;
 
   Transport.destroy({
-    where: { id },
+    where: { id: transportId },
   })
     .then((num) => {
       if (num === 1) {
@@ -84,7 +84,7 @@ export const deleteTransport = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot delete with id=${id}. Maybe was not found!`,
+          message: `Cannot delete with id=${transportId}. Maybe was not found!`,
         });
       }
     })

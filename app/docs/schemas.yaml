@@ -1,0 +1,92 @@
+components:
+  schemas:
+    TransportModel:
+      type: object
+      required:
+        - id
+        - transportNumber
+      properties:
+        id:
+          type: integer
+          description: Transport ID
+        transportNumber:
+          type: string
+          description: Transport number
+        model:
+          type: string
+          description: Transport model
+        transportType:
+          type: string
+          enum: [cargo, passenger]
+          description: Transport type
+        purchaseDate:
+          type: string
+          format: date
+          description: Transport purchase date
+        mileage:
+          type: number
+          description: Transport mileage
+        status:
+          type: string
+          enum: [available, unavailable]
+          description: Transport status
+      example:
+        id: 1
+        transportNumber: DE57 UEF
+        model: Scania
+        transportType: cargo
+        purchaseDate: '2020-08-10T00:00:00.000Z'
+        mileage: 50000
+        status: available
+    RouteModel:
+      type: object
+      required:
+        - id
+        - startCity
+        - endCity
+      properties:
+        id:
+          type: integer
+          description: Route ID
+        startCity:
+          type: string
+          description: Route start city
+        endCity:
+          type: string
+          description: Route end city
+        distance:
+          type: number
+          description: Transport distance
+        departureDate:
+          type: string
+          format: date
+          description: Route departure date
+        transportType:
+          type: string
+          enum: [cargo, passenger]
+          description: Route type
+        revenue:
+          type: number
+          description: Route revenue
+        arrivalDate:
+          type: string
+          format: date
+          description: Route arrival date
+        status:
+          type: string
+          enum: [awaiting, in progress, completed]
+          description: Route status
+        transportId: 
+          type: integer
+          description: Route Transport ID
+      example:
+        id: 1
+        startCity: London
+        endCity: Paris
+        distance: 3000
+        departureDate: '2021-08-10T00:00:00.000Z'
+        transportType: cargo
+        revenue: 10000
+        arrivalDate: '2021-08-12T00:00:00.000Z'
+        status: awaiting
+        transportId: null

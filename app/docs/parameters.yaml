@@ -1,0 +1,16 @@
+components:
+  parameters:
+    transportId:
+      name: transportId
+      description: Transport ID
+      in: path
+      required: true
+      schema:
+        type: integer
+    routeId:
+      name: routeId
+      description: Route ID
+      in: path
+      required: true
+      schema:
+        type: integer   

@@ -1,0 +1,5 @@
+tags:
+  - name: Transport
+    description: Queries related with transports
+  - name: Route
+    description: Queries related with routes

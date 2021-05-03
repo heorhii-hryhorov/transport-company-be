@@ -4,13 +4,13 @@ const { Route } = db;
 
 export const create = (req, res) => {
   const route = {
-    startCity: req.body['start-city'],
-    endCity: req.body['end-city'],
+    startCity: req.body.startCity,
+    endCity: req.body.endCity,
     distance: req.body.distance,
-    departureDate: req.body['departure-date'],
-    transportType: req.body['transport-type'],
+    departureDate: req.body.departureDate,
+    transportType: req.body.transportType,
     revenue: req.body.revenue,
-    arrivalDate: req.body['arrival-date'],
+    arrivalDate: req.body.arrivalDate,
     status: req.body.status,
   };
 
@@ -40,21 +40,21 @@ export const findAll = (req, res) => {
 };
 
 export const update = (req, res) => {
-  const { id } = req.params;
+  const { routeId } = req.params;
 
   const route = {
-    startCity: req.body['start-city'],
-    endCity: req.body['end-city'],
+    startCity: req.body.startCity,
+    endCity: req.body.endCity,
     distance: req.body.distance,
-    departureDate: req.body['departure-date'],
-    transportType: req.body['transport-type'],
+    departureDate: req.body.departureDate,
+    transportType: req.body.transportType,
     revenue: req.body.revenue,
-    arrivalDate: req.body['arrival-date'],
+    arrivalDate: req.body.arrivalDate,
     status: req.body.status,
   };
 
   Route.update(route, {
-    where: { id },
+    where: { id: routeId },
   })
     .then((num) => {
       if (num === 1) {
@@ -63,7 +63,7 @@ export const update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update record with id=${id}.`,
+          message: `Cannot update record with id=${routeId}.`,
         });
       }
     })
@@ -76,10 +76,9 @@ export const update = (req, res) => {
 };
 
 export const deleteRoute = (req, res) => {
-  const { id } = req.params;
-
+  const { routeId } = req.params;
   Route.destroy({
-    where: { id },
+    where: { id: routeId },
   })
     .then((num) => {
       if (num === 1) {
@@ -88,7 +87,7 @@ export const deleteRoute = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot delete with id=${id}. Maybe was not found!`,
+          message: `Cannot delete with id=${routeId}. Maybe was not found!`,
         });
       }
     })
