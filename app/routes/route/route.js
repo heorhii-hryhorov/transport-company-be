@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  assignTransport,
   createRoute, deleteRoute, findAllRoutes, updateRoute,
 } from '../../controllers/routeController';
 
@@ -98,13 +99,6 @@ router.put('/update/:routeId', updateRoute);
  *      - application/json
  *    parameters:
  *      - $ref: '#/components/parameters/routeId'
- *        schema:
- *          type: string
- *          required:
- *            - routeId
- *          properties:
- *            routeId:
- *              type: string
  *    responses:
  *        200:
  *          description: Route deleted successfully.
@@ -118,5 +112,40 @@ router.put('/update/:routeId', updateRoute);
  *          $ref: '#/components/responses/InternalServerError'
  */
 router.delete('/delete/:routeId', deleteRoute);
+
+/**
+ * @swagger
+ * /route/assign/{routeId}:
+ *  put:
+ *    tags: [Route]
+ *    description: Assigns transport to route.
+ *    produces:
+ *      - application/json
+ *    parameters:
+ *      - $ref: '#/components/parameters/routeId'
+ *      - in: body
+ *        name: Route
+ *        description: Route data
+ *        schema:
+ *          type: object
+ *          required:
+ *            - transportId
+ *          properties:
+ *            transportId:
+ *              type: integer
+ *              description: Transport ID
+ *    responses:
+ *        200:
+ *          description: Transport assigned successfully.
+ *        404:
+ *          $ref: '#/components/responses/NotFound'
+ *        403:
+ *          $ref: '#/components/responses/Forbidden'
+ *        401:
+ *          $ref: '#/components/responses/AccessDenied'
+ *        500:
+ *          $ref: '#/components/responses/InternalServerError'
+ */
+router.put('/assign/:routeId', assignTransport);
 
 export default router;

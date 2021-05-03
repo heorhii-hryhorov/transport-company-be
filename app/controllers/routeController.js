@@ -1,6 +1,6 @@
 import db from '../models';
 
-const { Route } = db;
+const { Route, Transport } = db;
 
 export const createRoute = (req, res) => {
   const route = {
@@ -56,16 +56,10 @@ export const updateRoute = (req, res) => {
   Route.update(route, {
     where: { id: routeId },
   })
-    .then((num) => {
-      if (num === 1) {
-        res.status(200).send({
-          message: 'Updated successfully',
-        });
-      } else {
-        res.send({
-          message: 'Not found',
-        });
-      }
+    .then(() => {
+      res.status(200).send({
+        message: 'Updated successfully',
+      });
     })
     .catch((err) => {
       res.status(500).send({
@@ -90,6 +84,34 @@ export const deleteRoute = (req, res) => {
           message: 'Not found',
         });
       }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || 'Some error occurred',
+      });
+    });
+};
+
+export const assignTransport = async (req, res) => {
+  const { routeId } = req.params;
+  const route = {
+    transportId: req.body.transportId,
+  };
+  const transportCount = await Transport.count({ where: { id: req.body.transportId } });
+  if (!transportCount) {
+    res.status(404).send({
+      message: 'Not found',
+    });
+  }
+
+  Route.update(route, {
+    where: { id: routeId },
+  })
+    .then(() => {
+      res.status(200).send({
+        message: 'Updated successfully',
+      });
     })
     .catch((err) => {
       res.status(500).send({

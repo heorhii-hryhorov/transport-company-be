@@ -52,16 +52,10 @@ export const updateTransport = (req, res) => {
   Transport.update(transport, {
     where: { id: transportId },
   })
-    .then((num) => {
-      if (num === 1) {
-        res.send({
-          message: 'Updated successfully',
-        });
-      } else {
-        res.status(404).send({
-          message: 'Not found',
-        });
-      }
+    .then(() => {
+      res.status(200).send({
+        message: 'Updated successfully',
+      });
     })
     .catch((err) => {
       res.status(500).send({
