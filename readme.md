@@ -1,4 +1,3 @@
-#Requirements
 # Requirements
 - NodeJS v14
 - MySQL
